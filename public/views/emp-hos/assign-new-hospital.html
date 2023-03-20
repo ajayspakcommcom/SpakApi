@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Assign New Hospital</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="../../js/common.js"></script>
+  <script src="../../js/axios.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+  <form id="frm1" onsubmit="ValidateUnAssignedHospitals();return false;">
+    <div class="container-fluid">
+      <div class="row">
+          <div class="col-lg-6">
+              <strong>Assign New Hospital</strong>        
+          </div>
+          <div class="col-lg-6 text-right" style="display: flex; justify-content: space-between;">
+            
+            
+          </div>
+      </div>
+      <table id="un-assinged-hospital-list" class="table table-bordered">
+        <thead>
+          <tr>
+            <th>
+              <input type="checkbox" class="checkbox" value="1" id="ckbCheckAll">
+            </th>
+            <th>Hosptal Name</th>
+            <th>Region</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+        </tbody>
+      </table>
+      <button type="submit" class="btn btn-success" id="isApprove">Approve</button>
+    </div>
+  </form>
+     <!--Data Table-->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.css" />
+  <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
+  <!--Data Table-->
+  <script src="../../js/employees.js"></script>
+  <script>
+    $(function () {
+      console.log("ready!");
+        $('#emp-hos-new').attr('href', `${_URL._EMPLOYEE_HOSPITAL_NEW}`);
+
+      setupAssignNewHospitalToEmployeePage();
+
+      $('#un-assinged-hospital-list').DataTable({
+        iDisplayLength: 50,
+        pageLength: 50,
+        paging: true,
+        processing: true,
+        language: {
+          //emptyTable":     "No data available in table",
+          processing: "Please wait .. ", // default Loading...
+          loadingRecords: "Loading...",
+          emptyTable: 'No matching records found', // 
+          zeroRecords: "No matching records found"
+        },
+      });
+    });
+
+  </script>
+  <script>
+
+  function isEnableApproveBtn() {
+    const isApproveBtn = $('#isApprove');
+    if ($('.selectedchk:checked').length > 0) {
+      isApproveBtn.removeAttr('disabled');
+    } else {
+      isApproveBtn.attr("disabled", true);
+    }
+  }
+
+    $('#ckbCheckAll').on('click', function () {
+        if (this.checked) {
+          $('.selectedchk').each(function () {
+            this.checked = true;
+          });
+        } else {
+          $('.selectedchk').each(function () {
+            this.checked = false;
+          });
+        }
+        isEnableApproveBtn();
+      });
+
+      $('#assign-hosp-list').on('click', '.selectedchk', function () {
+    //alert('Ram');
+    console.log('checked');
+    if ($('.selectedchk:checked').length == $('.selectedchk').length) {
+        $('#ckbCheckAll').prop('checked', true);
+    } else {
+        $('#ckbCheckAll').prop('checked', false);
+    }
+    isEnableApproveBtn();
+});
+
+  </script>
+
+</body>
+</html>

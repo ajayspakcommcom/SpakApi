@@ -1,0 +1,86 @@
+<html>
+
+<head>
+    <title>FERTIBIZ : RC Update </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/app.css" />
+</head>
+
+<body class="inside-theme">
+
+    <div class="theme-wrapper">
+        <div class="navigation"></div>
+        <div class="content">
+          <div class="content-bg">
+            <div class="right-header">
+              <h1>RC Update</h1>
+              <ul id="right-nav"></ul>
+            </div>
+            <div class="right-content">
+              <div class="table-responsive">
+                <table class="table table-data" id="myTable01">
+                  <thead>
+                      <tr>
+                          <th>Account Name</th>
+                          <th>Centre Name</th>
+                          <th>Doctor Name</th>
+                          <th>Rate Status</th>
+                          <th>Action</th>
+                      </tr>
+                  </thead>
+                  <tbody id="centerList">
+                  </tbody>
+                </table>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="loader">
+        <img src="../../img/loader.gif" alt="ivf loader" class="img-responsive" />
+      </div>
+
+      <div class="menu-overlay"></div>
+
+    <!-- <nav class="navbar" id="header"></nav>
+    <main class="container-fluid">
+        <h1 class="text-center">RC List</h1>
+        <div class="custom-table form heading-wrapper">            
+            <div class="text-right">
+              <a href="javascript:void(0);" onclick="goBack()" class="btn btn-success">Go Back</a>
+            </div>
+          </div>
+
+        <table class="table table-bordered table-bg">
+            <thead>
+                <tr>
+                    <th>Account Name</th>
+                    <th>Centre Name</th>
+                    <th>Doctor Name</th>
+                    <th>Rate Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="centerList">
+            </tbody>
+        </table>
+    </main> -->
+
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/common.js"></script>
+    <script src="../../js/axios.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/admin.js"></script>
+    <script src="../../js/rc.js"></script>
+    <script>
+        $(function () {
+            setupPage()
+        });
+    </script>
+</body>
+
+</html>

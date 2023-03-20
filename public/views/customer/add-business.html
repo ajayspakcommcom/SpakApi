@@ -1,0 +1,139 @@
+<html>
+
+<head>
+  <title>FERTIBIZ : Add Business </title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/css/app.css" />
+</head>
+
+<body>
+
+  <nav class="navbar" id="header"></nav>
+
+  <main class="container-fluid">
+    <h1 class="text-center">Add Business</h1>
+    <div class="text-right">
+      <!-- <a href="./add-customer" class="btn btn-success">Go Back</a> -->
+      <a href="javascript:void(0);" onclick="goBack()" class="btn btn-success">Go Back</a>
+    </div>
+
+    <div class="form-wrapper">
+      <form>
+        <div class="panel-group" id="accordion">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#foligraf">Foligraf</a>
+              </h4>
+            </div>
+            <div id="foligraf" class="panel-collapse collapse in">
+              <div class="panel-body">
+                <div class="form-section">
+                  <h5><strong>FOLIGRAF PEN</strong></h5>
+                  <hr>
+                  <table class="table table-bordered table-bg">
+                    <thead>
+                      <tr>
+                        <th>SKU</th>
+                        <th>Standard Price</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <span>FOLIGRAF 900 IU/1.5 ML PEN</span>
+                        </td>
+                        <td>
+                          <div class="form-group">
+                            <input type="text" onkeypress="return isNumber(event)" maxlength="2" class="form-control"
+                              id="txt_1_1_1_unitSold" name="txt_1_1_1_unitSold" pricefield="hid_1_1_1_Price"
+                              ratecontractfield="txt_1_1_1_ContractRate"
+                              unitsoldbusinessfield="txt_1_1_1_unitSoldBusiness" required=""
+                              onblur="calculateBusiness(this);">
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <h5><strong>FOLIGRAF (LYO/PFS)</strong></h5>
+                  <hr>
+                  <table class="table table-bordered table-bg">
+                    <thead>
+                      <tr>
+                        <th>SKU</th>
+                        <th>Standard Price</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <span>FOLIGRAF 1200 IU LYO MULTIDOSE</span>
+                        </td>
+                        <td>
+                          <div class="form-group">
+                            <input type="text" onkeypress="return isNumber(event)" maxlength="2" class="form-control"
+                              id="txt_1_2_4_unitSold" name="txt_1_2_4_unitSold" pricefield="hid_1_2_4_Price"
+                              ratecontractfield="txt_1_2_4_ContractRate"
+                              unitsoldbusinessfield="txt_1_2_4_unitSoldBusiness" required=""
+                              onblur="calculateBusiness(this);">
+                          </div>
+                        </td>
+                      </tr>
+                    
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="checkbox-date-wrapper">
+          <div class="checkbox">
+            <label><input type="checkbox" id="chkIsContractRateApplicable" value="" onclick="setRate()">Rate Contract
+              Applicable Till</label>
+          </div>
+
+          <div class="form-group">
+            <input type="date" class="form-control" id="txtContractEndDate" name="txtContractEndDate">
+          </div>
+        </div>
+
+        <div class="total-business-value">
+          <b>Total Business Value</b>
+          <br>
+          <span id="spnTotalBusinessValue">00.00</span>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12"></div>
+          <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+            <div class="two-btn-wrapper">
+              <button type="reset" class="btn btn-default btn-grad">Reset</button>
+              <button type="submit" class="btn btn-default btn-grad" onclick="validateMe();return false;">Save</button>
+            </div>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </main>
+
+  <div class="menu-overlay"></div>
+
+  <script src="../../js/jquery.min.js"></script>
+  <script src="../../js/common.js"></script>
+  <script src="../../js/axios.min.js"></script>
+  <script src="../../js/bootstrap.min.js"></script>
+  <script src="../../js/admin.js"></script>
+  <script src="../../js/business.js"></script>
+  <script>
+    $(function () {
+      // console.log( "ready!" );
+      //setupPage();
+    });
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,97 @@
+<html>
+
+<head>
+  <title>FERTIBIZ : Dashboard </title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" type="text/css" href="/css/daterangepicker.css" />
+  <link rel="stylesheet" href="/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/css/app.css" />
+</head>
+
+<body class="inside-theme">
+
+  <div class="theme-wrapper">
+    <div class="navigation"></div>
+    <div class="content">
+      <div class="content-bg overflow">
+        <div class="right-header">
+          <h1>Potential Report</h1>
+          <ul id="right-nav"></ul>
+        </div>
+
+        <div class="right-content">
+          <form>
+            <div class="hospital-search-wrapper admin-filter-wrapper">
+              <div class="form-group">
+                <select class="form-control" id="monthCombo">
+                  <option value="none" selected disabled hidden>Select Month</option>
+                  <option value="jan">Jan</option>
+                  <option value="feb">Feb</option>
+                  <option value="mar">Mar</option>
+                  <option value="apr">Apr</option>
+                  <option value="jun">May</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <select class="form-control" id="zbmCombo" onchange="setDesignationFilters(event, 'zbm')"></select>
+              </div>
+              <div class="form-group">
+                <select class="form-control" id="rbmCombo" onchange="setDesignationFilters(event, 'rbm')"></select>
+              </div>
+              <div class="form-group">
+                <select class="form-control" id="kamCombo" onchange="setDesignationFilters(event, 'kam')"></select>
+              </div>
+              <!-- <div class="form-group">
+                <select class="form-control" id="centerCombo">
+                  <option value="none" selected disabled hidden>Select Centre</option>
+                  <option value="1">Centre 1</option>
+                  <option value="2">Centre 2</option>
+                  <option value="3">Centre 3</option>
+                  <option value="4">Centre 4</option>
+                  <option value="4">Centre 5</option>
+                </select>
+              </div> -->
+              <div class="search-btn-wrapper">
+                <button type="reset" class="btn btn-default btn-grad go-back">Reset</button>
+                <button type="submit" class="btn btn-default btn-grad go-back">Filter</button>
+              </div>
+
+            </div>
+
+          </form>
+
+          <div class="container admin-chart-wrapper">
+            <h1>Content</h1>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="menu-overlay"></div>
+
+
+  <script src="../../js/jquery.min.js"></script>
+  <script src="../../js/common.js"></script>
+  <script src="../../js/moment.min.js"></script>
+  <script src="../../js/daterangepicker.min.js"></script>
+  <script type="text/javascript" src="../../js/googlechart.js"></script>
+  <script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-core.min.js"></script>
+  <script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-venn.min.js"></script>
+  <script src="https://cdn.anychart.com/releases/8.9.0/themes/pastel.min.js"></script>
+  <script src="../../js/axios.min.js"></script>
+  <script src="../../js/bootstrap.min.js"></script>
+  <script src="../../js/admin.js"></script>
+  <script src="../../js/reports.js"></script>
+  <script>
+    $(function () {
+      getPotentialPage();
+    });
+  </script>
+
+
+</body>
+
+</html>

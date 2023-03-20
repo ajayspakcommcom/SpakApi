@@ -1,0 +1,181 @@
+<html>
+
+<head>
+  <title>FERTIBIZ : Centre List </title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/css/app.css" />
+</head>
+
+<body class="inside-theme">
+
+
+  <div class="theme-wrapper">
+    <div class="navigation"></div>
+    <div class="content">
+      <div class="content-bg">
+        <div class="right-header">
+          <h1>
+            <div class="bread">
+              Hi <span id="kamName"></span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="rbm-right-arrow" viewBox="0 0 64 42.67"><defs></defs><title>Asset 47</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1" d="M63.22,19.57,44.5.78a2.67,2.67,0,0,0-3.78,3.77L54.79,18.67H2.67a2.67,2.67,0,1,0,0,5.33H55L40.73,38.11a2.67,2.67,0,1,0,3.76,3.78L63.21,23.35a2.67,2.67,0,0,0,0-3.78Z"/></g></g></svg>
+              <span>Account Mapping</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="rbm-right-arrow" viewBox="0 0 64 42.67"><defs></defs><title>Asset 47</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1" d="M63.22,19.57,44.5.78a2.67,2.67,0,0,0-3.78,3.77L54.79,18.67H2.67a2.67,2.67,0,1,0,0,5.33H55L40.73,38.11a2.67,2.67,0,1,0,3.76,3.78L63.21,23.35a2.67,2.67,0,0,0,0-3.78Z"/></g></g></svg>
+              <span>Master Data </span>
+            </div>
+          </h1>
+          <ul id="right-nav"></ul>
+        </div>
+        <div class="right-content">   
+            
+            <div class="theme-form">
+
+                <div class="text-right">
+                  <a href="javascript:void(0);" class="btn btn-default btn-grad go-back" onclick="ApproveDataSingleWay()" id="customerApproved">Approve Data List</a>
+                  <a href="javascript:void(0);" onclick="goBack()" class="btn btn-default btn-grad go-back">Go Back</a>
+                </div>
+
+                <!-- <ul class="nav nav-tabs gradient-tabs">
+                    <li><a data-toggle="tab" href="#chart">Data in Chart Format</a></li>
+                    <li class="active"><a data-toggle="tab" href="#tabular">Data in Tabular Format</a></li>
+                  </ul> -->
+               
+                <div class="tab-content">
+                    <div id="chart" class="tab-pane fade">
+                      <table>
+                        <tr>
+                          <td>
+                            <div id="business_chart"></div>
+                          </td>
+                          <td>
+                            <div id="business_chart_FOLIGRAF"></div>
+                          </td>
+                          <td>
+                            <div id="business_chart_HUMOG"></div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>
+                            <div id="business_chart_ASPORELIX"></div>
+                          </td>
+                          <td>
+                            <div id="business_chart_R-HUCOG"></div>
+                          </td>
+                          <td>
+                            <div id="business_chart_FOLICULIN"></div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="3">
+                            <div id="business_chart_MIDYDROGEN"></div>
+                          </td>
+                        </tr>
+                    </table>
+                    </div>
+                    <div id="tabular" class="tab-pane fade in active">
+                        <!-- <div class="text-right">
+                          <a href="javascript:void(0);" class="btn btn-default btn-grad go-back" onclick="ApproveDataSingleWay()">Approve Data List</a>
+                        </div> -->
+                        
+                        <!-- <table class="table table-data shadow" id="customerList">
+                          <thead>
+                            <tr>
+                              <th>Is Approved</th>
+                              <th>Account Name</th>
+                              <th>Centre Name</th>
+                              <th>Customer Name</th>
+                              <th>Designation</th>
+                              <th>Mobile</th>
+                              <th>Email</th>
+                              <th>Full Address</th>
+                              <th>Chemist Mapped</th>
+                              <th>Chain Status</th>
+                              <th>View Profile</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                          </tbody>
+                      </table> -->
+
+                      <table class="table table-data shadow" id="customerList1">
+                        <thead>
+                          <tr>
+                            
+                            <th>Account Name</th>
+                            <th>Centre Name</th>
+                            <th>Customer Name</th>
+                            <th>Designation</th>                                                        
+                            <th>Visit Type</th>                                                        
+                            <th>City</th>                                                        
+                          </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="loader">
+    <img src="../../img/loader.gif" alt="ivf loader" class="img-responsive" />
+  </div>
+
+  <div class="menu-overlay"></div>
+
+  <!-- <nav class="navbar" id="header"></nav>
+  <main class="container-fluid">
+    <h1 class="text-center">Master Data Approval</h1>
+    <div class="text-right">
+      <a href="javascript:void(0);" class="btn btn-success" onclick="ApproveDataSingleWay()">Approve Data List</a>
+      <a href="javascript:void(0);" onclick="goBack()" class="btn btn-success">Go Back</a>
+    </div>
+
+    <table class="table table-bordered table-bg" id="customerList">
+      <thead>
+        <tr>
+          <th>Is Approved</th>
+          <th>Account Name</th>
+          <th>Centre Name</th>
+          <th>Doctor Name</th>
+          <th>Specialty</th>
+          <th>Mobile</th>
+          <th>Email</th>
+          <th>Full Address</th>
+          <th>Chemist Mapped</th>
+          <th>Chain Status</th>
+          <th>View Profile</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </main> -->
+
+  <script src="../../js/jquery.min.js"></script>
+  <script src="../../js/common.js"></script>
+  <script src="../../js/admin.js"></script>
+  <script src="../../js/axios.min.js"></script>
+  <script src="../../js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.css" />
+  <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
+  <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap.min.js" />-->
+  <script src="../../js/hospitals.js"></script>
+
+  <script>
+    $(function () {
+      getCustomerList();
+      selectCustomerRow();
+    });
+
+  </script>
+</body>
+
+</html>

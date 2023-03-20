@@ -1,0 +1,68 @@
+<html>
+
+<head>
+  <title>FERTIBIZ : Account Mapping </title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/css/app.css" />
+</head>
+
+<body class="inside-theme">
+
+  <div class="theme-wrapper">
+    <div class="navigation"></div>
+    <div class="content">
+      <div class="content-bg">
+        <div class="right-header">
+          <h1>
+            <div class="bread">
+             <span id="kamName"></span><svg xmlns="http://www.w3.org/2000/svg" class="rbm-right-arrow" viewBox="0 0 64 42.67"><defs></defs><title>Asset 47</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1" d="M63.22,19.57,44.5.78a2.67,2.67,0,0,0-3.78,3.77L54.79,18.67H2.67a2.67,2.67,0,1,0,0,5.33H55L40.73,38.11a2.67,2.67,0,1,0,3.76,3.78L63.21,23.35a2.67,2.67,0,0,0,0-3.78Z"/></g></g></svg>
+              <span>Account Mapping Approval</span>
+            </div>
+          </h1>
+          <ul id="right-nav"></ul>
+        </div>
+        <div class="right-content flex-center">         
+          <div class="account-mapping-btn-wrapper">
+            <a class="btn btn-default btn-grad" id="hrfPotential" href="#">Potential</a>
+            <a class="btn btn-default btn-grad" id="hrfMarketInsight">Market Insight</a>
+            <a class="btn btn-default btn-grad" id="hrfBusiness" href="#">Business</a>
+            <a class="btn btn-default btn-grad" id="hrfCompetition" href="#">Competition</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="loader">
+    <img src="../../img/loader.gif" alt="ivf loader" class="img-responsive" />
+  </div>
+
+  <div class="menu-overlay"></div>
+
+  <script src="../../js/jquery.min.js"></script>
+  <script src="../../js/common.js"></script>
+  <script src="../../js/axios.min.js"></script>
+  <script src="../../js/bootstrap.min.js"></script>
+  <script src="../../js/admin.js"></script>
+  <script src="../../js/account-mapping.js"></script>
+  <script>
+    $(function () {
+    //  getMyHospitalList();
+      isRcBtnVisible();
+      getKamDetails();
+      let urlArr = window.location.href.split('/'), empId = urlArr[urlArr.length - 1];
+      
+      $('#hrfPotential').attr('href', `/account-mapping/${empId}/potential-list`);
+      $('#hrfBusiness').attr('href', `/account-mapping/${empId}/business-list`)
+      $('#hrfRateContract').attr('href', `/account-mapping/${empId}/rate-contract-list`)
+      $('#hrfCompetition').attr('href', `/account-mapping/${empId}/competition-list`)
+      $('#hrfMarketInsight').attr('href', `/account-mapping/${empId}/market-insight-list`)
+    });
+
+
+  </script>
+</body>
+
+</html>

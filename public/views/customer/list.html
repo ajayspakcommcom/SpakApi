@@ -1,0 +1,115 @@
+<html>
+
+<head>
+  <title>FERTIBIZ : Customer List </title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/css/app.css" />
+
+  <style>
+    #customerList_length
+    /*#customerList_paginate*/
+    {
+      display: none;
+    }
+  </style>
+
+</head>
+
+<body class="inside-theme">
+
+  <div class="theme-wrapper">
+    <div class="navigation"></div>
+    <div class="content">
+      <div class="content-bg">
+        <div class="right-header">
+          <h1>Master Data</h1>
+          <ul id="right-nav"></ul>
+        </div>
+
+          
+
+        <div class="right-content">
+          <table class="table table-data" id="customerList">
+            <thead>
+              <tr>
+                <!-- <th>Is Delete (Select)</th> -->
+                <th>Account Name</th>
+                <th>Centre Name</th>
+                <th>Customer Name</th>
+                <th>Specialty</th>
+                <th>Mobile</th>
+                <th>Email</th>
+                <th>Full Address</th>
+                <th>Chemist Mapped</th>
+                <th>Chain Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- <nav class="navbar" id="header"></nav>
+      <main class="container-fluid">
+         <h1 class="text-center">Master Data</h1>
+         <div class="text-right">
+            <a href="./add-customer" class="btn btn-success">New Customer</a>
+            <button id="deleteBtn" class="btn btn-success" onclick="bulkCustomerDataDelete()">Delete Multiple Records</button>
+          </div>
+         <table class="table table-bordered table-bg" id="customerList">
+            <thead>
+              <tr>
+                <th>Is Delete (Select)</th>
+                <th>Account Name</th>
+                <th>Centre Name</th>
+                <th>Customer Name</th>
+                <th>Specialty</th>
+                <th>Mobile</th>
+                <th>Email</th>
+                <th>Full Address</th>
+                <th>Chemist Mapped</th>
+                <th>Chain Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+      </main> -->
+
+      <div class="loader">
+        <img src="../../img/loader.gif" alt="ivf loader" class="img-responsive" />
+      </div>
+
+      <div class="menu-overlay"></div>
+
+  <script src="../../js/jquery.min.js"></script>
+  <script src="../../js/common.js"></script>
+  <script src="../../js/admin.js"></script>
+  <script src="../../js/axios.min.js"></script>
+  <script src="../../js/bootstrap.min.js"></script>
+
+  <!--Data Table-->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.css" />
+  <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.js"></script>
+  <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" /> -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap.min.js" />
+  <!--Data Table-->
+  <script src="../../js/hospitals.js"></script>
+
+  <script>
+    $(function () {
+      isLoaderVisible(true);
+      getCustomerList();
+      selectCustomerRow();
+    });
+
+  </script>
+</body>
+
+</html>

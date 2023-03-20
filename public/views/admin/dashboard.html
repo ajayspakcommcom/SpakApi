@@ -1,0 +1,27 @@
+<h1>
+welcome to dashboard
+
+</h1>
+
+<div>    Total Number of employees:   </div><div id="spTotalEmployee"></div> 
+<div>    Total Number of Hospitals:</div><div id="spTotalHospitals"></div> 
+<div>    Total Number of Hospitals dont belong to anyone: xxx</div>
+<div>    Total Number of Kam dont have any Hospitals: xxx</div>
+
+
+
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/common.js"></script>
+<script src="../../js/axios.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+<script src="../../js/admin.js"></script>
+<script>
+$(function() {
+    console.log( "ready!" );
+    getAdminDashboardData();
+});
+
+</script>
+
+<a href="/hospitals">Hospitals</a><br>
+<a href="/employees">employees</a>

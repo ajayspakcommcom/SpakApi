@@ -1,0 +1,145 @@
+<html>
+
+    <head>
+        <title>FERTIBIZ : Report List </title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="/css/app.css" />
+    </head>
+
+    <body>
+
+        <nav class="navbar" id="header"></nav>
+        
+        <main class="container">
+            <h1 class="text-center">Dashboard Report</h1>
+            
+            <form class="hide">
+                <div class="hospital-search-wrapper">
+                    <div class="form-group">
+                        <select class="form-control" id="centerCombo">
+                            <option>Centre Wise</option>
+                            <option>Mumbai</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" id="chainCombo">
+                            <option>Chain Wise</option>
+                            <option>Mumbai</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" id="drCombo">
+                            <option>Doctor Wise</option>
+                            <option>Mumbai</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" id="specialityCombo">
+                            <option>Speciality Wise</option>
+                            <option>Mumbai</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" id="zbmCombo">
+                            <option>ZBM Wise</option>
+                            <option>Mumbai</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" id="rbmCombo">
+                            <option>RBM Wise</option>
+                            <option>Mumbai</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" id="kamCombo">
+                            <option>KAM Wise</option>
+                            <option>Mumbai</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" id="potentialCombo">
+                            <option>Potential Wise</option>
+                            <option>Mumbai</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" id="businessProdCombo">
+                            <option>Business Product Wise</option>
+                            <option>Mumbai</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" id="periodCombo">
+                            <option>Period Wise</option>
+                            <option>Mumbai</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" id="marketingInniateCombo">
+                            <option>Marketing Innitiatives Wise</option>
+                            <option>Mumbai</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="search" placeholder="Search" />
+                    </div>
+                </div>
+
+                <div class="search-btn-wrapper">
+                    <button type="reset" class="btn btn-success">Reset</button>
+                    <button type="submit" class="btn btn-success">Search</button>
+                </div>
+            </form>
+
+            <table class="table table-bordered table-bg">
+                <thead>
+                    <tr>
+                        <th>Centre Name</th>
+                        <th>Name of Doctor</th>
+                        <th>Rate Contract Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>MOTHER & CHILD HOPITAL</td>
+                        <td>Ajay Kumar Mishra</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td>MOTHER & CHILD HOPITAL</td>
+                        <td>Ajay Kumar Mishra</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td>MOTHER & CHILD HOPITAL</td>
+                        <td>Ajay Kumar Mishra</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td>MOTHER & CHILD HOPITAL</td>
+                        <td>Ajay Kumar Mishra</td>
+                        <td>Yes</td>
+                    </tr>
+                    <tr>
+                        <td>MOTHER & CHILD HOPITAL</td>
+                        <td>Ajay Kumar Mishra</td>
+                        <td>Yes</td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+
+        <div class="menu-overlay"></div>
+
+        <script src="../../js/jquery.min.js"></script>
+        <script src="../../js/common.js"></script>
+        <script src="../../js/axios.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/admin.js"></script>
+
+    </body>
+
+</html>

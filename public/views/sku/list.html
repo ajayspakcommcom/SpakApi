@@ -1,0 +1,83 @@
+<html>
+
+<head>
+  <title>FERTIBIZ : Sku List </title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/css/app.css" />
+</head>
+
+<body class="inside-theme">
+
+  <div class="theme-wrapper">
+    <div class="navigation"></div>
+    <div class="content">
+      <div class="content-bg">
+        <div class="right-header">
+          <h1>Sku List</h1>
+          <ul id="right-nav"></ul>
+        </div>
+        <div class="right-content">
+          <div class="theme-form">
+            <div class="text-right add-back-btn">
+              <a href="./add-sku" class="btn btn-default btn-grad go-back">New Sku</a>
+              <a href="javascript:void(0);" onclick="goBack()" class="btn btn-default btn-grad go-back">Go Back</a>
+            </div>
+            <table class="table table-data" id="myTable01">
+              <thead>
+                <tr>
+                  <th>Brands</th>
+                  <th>Brand Groups</th>
+                  <th>Sku's</th>
+                  <th>Price</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="skudata">
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="menu-overlay"></div>
+
+  <!-- <nav class="navbar" id="header"></nav>
+
+      <main class="container-fluid">
+         <h1 class="text-center">Sku List</h1>
+         <div class="text-right"><a href="./add-sku" class="btn btn-success">New Sku</a></div>
+         <table class="table table-bordered table-bg">
+            <thead>
+              <tr>
+                <th>Brands</th>
+                <th>Brand Groups</th>
+                <th>Sku's</th>
+                <th>Price</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="skudata">
+            </tbody>
+          </table>
+      </main> -->
+
+  <script src="../../js/jquery.min.js"></script>
+  <script src="../../js/common.js"></script>
+  <script src="../../js/axios.min.js"></script>
+  <script src="../../js/bootstrap.min.js"></script>
+  <script src="../../js/admin.js"></script>
+  <script src="../../js/sku.js"></script>
+  <script>
+    $(function () {
+      getSKUList();
+    });
+
+  </script>
+
+</body>
+
+</html>

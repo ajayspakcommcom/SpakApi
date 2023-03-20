@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>FERTIBIZ : Rate Contract List </title>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="/css/app.css" />
+    </head>
+<body>
+    
+  <nav class="navbar" id="header"></nav>
+
+      <main class="container-fluid">
+         <h1 class="text-center">Rate Contract List</h1>
+         <div class="text-right"><a href="./add-chain-account" class="btn btn-success">Add Rate Contract</a></div>
+         <table class="table table-bordered table-bg">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Active</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="skudata"></tbody>
+          </table>
+      </main>
+
+      <div class="menu-overlay"></div>
+
+      <script src="../../js/jquery.min.js"></script>
+      <script src="../../js/common.js"></script>
+        <script src="../../js/axios.min.js"></script>
+        <script src="../../js/bootstrap.min.js"></script>
+        <script src="../../js/admin.js"></script>
+        <script src="../../js/contract.js"></script>
+        <script>
+          $(function() {
+            setupPage();
+          });
+          
+          </script>
+
+</body>
+</html>

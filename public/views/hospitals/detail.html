@@ -1,0 +1,26 @@
+<script src="../../js/jquery.min.js"></script>
+<script src="../../js/common.js"></script>
+<script src="../../js/axios.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+
+<div id='lblMsg'>
+
+</div>
+<form id="frm1" onsubmit="validateMe();return false;">
+    Hospital name: <input type="text" id="txtHospitalName" placeholder="Hospital Name" /><br><br>
+    region name: <input type="text" id="txtRegionName" placeholder="Hospital region Name" /><br><br>
+    <input type="checkbox" id="chkIsDisable" name="chkIsDisable" value="Checked"> Check to mark it disable <br><br>
+    <button>Submit</button>
+    <input type="reset" />
+</form>
+
+<div class="menu-overlay"></div>
+
+<script src="../../js/hospitals.js"></script>
+<script>
+    $(function () {
+        // console.log( "ready!" );
+
+        getHospitaDetails();
+    });
+</script>

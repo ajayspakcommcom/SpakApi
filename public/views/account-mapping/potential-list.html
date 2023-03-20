@@ -1,0 +1,232 @@
+<html>
+
+<head>
+    <title>FERTIBIZ : Potential List for Approval </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/app.css" />
+</head>
+
+<body class="inside-theme">
+
+    <div class="theme-wrapper">
+        <div class="navigation"></div>
+        <div class="content">
+            <div class="content-bg">
+                <div class="right-header">
+                    <h1>
+                        <div class="bread">
+                            <span id="kamName"></span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="rbm-right-arrow" viewBox="0 0 64 42.67">
+                                <defs></defs>
+                                <title>Asset 47</title>
+                                <g id="Layer_2" data-name="Layer 2">
+                                    <g id="Layer_1-2" data-name="Layer 1">
+                                        <path class="cls-1"
+                                            d="M63.22,19.57,44.5.78a2.67,2.67,0,0,0-3.78,3.77L54.79,18.67H2.67a2.67,2.67,0,1,0,0,5.33H55L40.73,38.11a2.67,2.67,0,1,0,3.76,3.78L63.21,23.35a2.67,2.67,0,0,0,0-3.78Z" />
+                                    </g>
+                                </g>
+                            </svg>
+                            <span>Account Mapping</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="rbm-right-arrow" viewBox="0 0 64 42.67">
+                                <defs></defs>
+                                <title>Asset 47</title>
+                                <g id="Layer_2" data-name="Layer 2">
+                                    <g id="Layer_1-2" data-name="Layer 1">
+                                        <path class="cls-1"
+                                            d="M63.22,19.57,44.5.78a2.67,2.67,0,0,0-3.78,3.77L54.79,18.67H2.67a2.67,2.67,0,1,0,0,5.33H55L40.73,38.11a2.67,2.67,0,1,0,3.76,3.78L63.21,23.35a2.67,2.67,0,0,0,0-3.78Z" />
+                                    </g>
+                                </g>
+                            </svg>
+                            <span>Potential List</span>
+                        </div>
+                    </h1>
+                    <ul id="right-nav"></ul>
+                </div>
+                <div class="right-content">
+
+                    <div class="theme-form">
+
+                        <div class="text-right">
+                            <a href="javascript:void(0);" onclick="goBack()"
+                                class="btn btn-default btn-grad go-back">GoBack</a>
+                        </div>
+
+                        <ul class="nav nav-tabs gradient-tabs">
+                            <li class="active"><a data-toggle="tab" href="#chart">Data in Chart Format</a></li>
+                            <li><a data-toggle="tab" href="#tabular">Data in Tabular Format</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                            <div id="chart" class="tab-pane fade in active">
+                                <div class="account-mapping-chart-potential-wrapper">
+                                    <div>
+                                        <div id="potential_chart1"></div>
+                                        <div id="potential_chart1_bar" hidden>
+                                            <div id="potential_chartIVF"></div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div id="potential_chart2"></div>
+                                    </div>
+                                    <div>
+                                        <div id="potential_chart3"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="tabular" class="tab-pane fade">
+
+                                <div class="text-right filter-main-wrapper">
+                                    <div class="text-right"><a href="javascript:void(0);"
+                                            onclick="approveListingPotential(0);return false;"
+                                            class="btn btn-default btn-grad go-back">Approve Selected</a></div>
+                                    <div class="form-group filter-wrapper">
+                                        <select class="form-control" id="comboAccountCategory" onchange="filterData()">
+                                            <option value="none" selected="" disabled="">Select Status</option>
+                                            <option value="All">All</option>
+                                            <option value="approved">Approved</option>
+                                            <option value="pending">Pending</option>
+                                            <option value="rejected">Rejected</option>
+                                        </select>
+                                        <!-- <button onclick="filterData()" class="btn btn-default btn-grad go-back">Filter ata</button> -->
+                                    </div>
+                                </div>
+
+                                <div class="table-responsive">
+                                    <table class="table table-data shadow" id="filterDataByCategoryTable">
+                                        <thead>
+                                            <tr>
+                                                <th><input type="checkbox" id="selectAll" /> &nbsp; Approve</th>
+                                                <th>Account Name</th>
+                                                <th>Center Name</th>
+                                                <th>IVF Core</th>
+                                                <th>Total no. of IUI cycles</th>
+                                                <th>Total no. of Stimulated IVF Cycles</th>
+                                                <!-- <th>Fresh pick-ups</th> -->
+                                                <th>No of Embryo Transfer</th>
+                                                <!-- <th>Self (Patient) cycles</th> -->
+                                                <th>Donor cycles</th>
+                                                <!-- <th>Agonist cycles</th> -->
+                                                <th>Antagonist cycles</th>
+                                                <th>Status</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="potentialData">
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="loader">
+        <img src="../../img/loader.gif" alt="ivf loader" class="img-responsive" />
+    </div>
+
+    <div class="menu-overlay"></div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Reject Potential</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <h5 id="divCenterName">Center Name: </h5>
+                        <h5 id="dvAccountName">Account Name: </h5>
+                        <h5 id="dvIVFCore">IVF Core: </h5>
+                        <input type="hidden" id="hidPotentialId" name="hidPotentialId" />
+                        <div class="form-group">
+                            <label for="message-text" class="col-form-label"><strong>Reason for reject:</strong></label>
+                            <textarea class="form-control" id="txtAreaRejectReason" maxlength="999" rows="5" cols="50"
+                                name="txtAreaRejectReason"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary"
+                        onclick="approveListingPotential(2);return false;">REJECT</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/common.js"></script>
+    <script src="../../js/axios.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/admin.js"></script>
+    <script src="../../js/googlechart.js"></script>
+    <script src="../../js/reports_potential.js"></script>
+    <script src="../../js/account-mapping.js"></script>
+
+    <script>
+        $(function () {
+            google.charts.load('current', { packages: ['corechart', 'bar'] });
+            setupPotentialPage();
+            getKamDetails();
+            $('#selectAll').click(function (e) {
+                var table = $(e.target).closest('table');
+                $('td input:checkbox', table).prop('checked', this.checked);
+            });
+
+
+            $('#exampleModal').on('show.bs.modal', function (event) {
+
+                var button = $(event.relatedTarget) // Button that triggered the modal
+                var recipient = button.data('centername') // Extract info from data-* attributes
+                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+                var modal = $(this)
+                modal.find('#divCenterName').text('Center Name: ' + button.data('centername'))
+                modal.find('#dvAccountName').text('Account Name ' + button.data('accountname'))
+                modal.find('#dvIVFCore').text('IVF Core ' + button.data('drname'))
+                modal.find('#hidPotentialId').val(button.data('potenitalid'))
+
+            })
+        });
+
+        function filterData() {
+            //debugger;
+            let dropdown, table, rows, cells, empName, filter;
+            dropdown = document.getElementById("comboAccountCategory");
+            table = document.getElementById("filterDataByCategoryTable");
+            rows = table.getElementsByTagName("tr");
+            filter = dropdown.value;
+            for (let row of rows) { // `for...of` loops through the NodeList
+                cells = row.getElementsByTagName("td");
+                if (cells) {
+                    // empName = cells[12] || null; // gets the 2nd `td` or nothing
+                    empName = cells[9] ? cells[9].querySelector('svg').getAttribute('class') : null; // gets the 2nd `td` or nothing    
+                    // if the filter is set to 'All', or this is the header row, or 2nd `td` text matches filter
+                    if (filter === "All" || !empName || (filter === empName.toLowerCase())) {
+                        row.style.display = ""; // shows this row                        
+                    }
+                    else {
+                        row.style.display = "none"; // hides this row
+                    }
+                }
+            }
+        }
+
+
+    </script>
+
+</body>
+
+</html>

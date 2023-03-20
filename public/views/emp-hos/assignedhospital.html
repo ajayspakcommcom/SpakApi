@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Assigned Hospital</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="../../js/common.js"></script>
+  <script src="../../js/axios.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-6">
+        <strong>Assigned Hospital</strong>
+      </div>
+      <div class="col-lg-6 text-right">
+        <a id="emp-hos-new" href="assign-new-hospital.html" class="btn btn-success">Add</a>
+      </div>
+    </div>
+    <table id="empHospitalList" class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Hosptal Name</th>
+          <th>Region</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+
+    </table>
+  </div>
+  <!--Data Table-->
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.css" />
+  <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.12.1/datatables.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
+  <!--Data Table-->
+  <script src="../../js/employees.js"></script>
+  <script>
+    $(function () {
+      console.log("ready!");
+        $('#emp-hos-new').attr('href', `${_URL._EMPLOYEE_HOSPITAL_NEW}${getIdFromURL()}`);
+
+      setupEmployeeHospitalPage();
+
+      $('#empHospitalList').DataTable({
+        iDisplayLength: 50,
+        pageLength: 50,
+        paging: true,
+        "processing": true,
+        language: {
+          //emptyTable":     "No data available in table",
+          processing: "Please wait .. ", // default Loading...
+          loadingRecords: "Loading...",
+          emptyTable: 'No matching records found', // 
+          zeroRecords: "No matching records found"
+        },
+        
+      });
+    });
+
+  </script>
+</body>
+
+</html>

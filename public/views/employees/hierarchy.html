@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Hierarchy</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="../../js/common.js"></script>
+  <script src="../../js/axios.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body> 
+
+  <div class="container-fluid">
+    <strong>Hierarchy</strong>
+    <strong><div id="dvMsg"></div></strong>
+    <form id="frm1" onsubmit="validateMe(); return false;">
+      <div><b>Name : </b> <div id="dvName"></div></div>
+      <div><b>Designation:</b><div id="dvDesi"></div></div>
+      <div><b>Manager Name:</b><div id="dvManager"></div></div>
+      <hr />
+      <div class="form-group">
+        <label for="combparent">Select Parent</label>
+        <select class="form-control" id="cmbParent">
+        </select>
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+  </div>
+
+  <div class="menu-overlay"></div>
+
+  <script src="../../js/employeesHierarchy.js"></script>
+  
+  <script>
+    $(function () {
+      // console.log( "ready!" );
+
+      setupPage();
+    });
+  </script>
+</body>
+</html>

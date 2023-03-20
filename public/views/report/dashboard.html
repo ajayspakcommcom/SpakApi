@@ -1,0 +1,459 @@
+<html>
+
+<head>
+  <title>FERTIBIZ : Dashboard </title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" type="text/css" href="/css/daterangepicker.css" />
+  <link rel="stylesheet" href="/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/css/app.css" />
+</head>
+
+<body>
+
+  <nav class="navbar" id="header"></nav>
+
+  <main class="container">
+    <h1>Dashboard</h1>
+
+    <form>
+      <div class="hospital-search-wrapper admin-filter-wrapper">
+        <div class="form-group">
+          <input type="text" name="daterange" value="01/01/2018 - 01/15/2018" class="common-input" />
+        </div>
+        <div class="form-group">
+          <select class="form-control" id="zbmCombo">
+            <option>Zbm</option>
+            <option>Mumbai</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <select class="form-control" id="rbmCombo">
+            <option>Rbm</option>
+            <option>Mumbai</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <select class="form-control" id="kbmCombo">
+            <option>Kbm</option>
+            <option>Mumbai</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <select class="form-control" id="brandCombo">
+            <option>Brand</option>
+            <option>Mumbai</option>
+          </select>
+        </div>
+      </div>
+      </div>
+      <div class="search-btn-wrapper">
+        <button type="reset" class="btn btn-success">Reset</button>
+        <button type="submit" class="btn btn-success">Search</button>
+      </div>
+    </form>
+
+    <div class="chart-wrapper bottom-border business-rc-char-wrapper">
+      <div>
+        <!-- <h2 class="sub-heading">Business Chart</h2> -->
+        <iframe src="/business-report" frameborder="0"></iframe>
+      </div>
+    </div>
+
+    <div class="chart-wrapper bottom-border business-rc-char-wrapper">
+      <div>
+        <!-- <h2 class="sub-heading">RC Agreement Chart</h2> -->
+        <iframe src="/rc-agreement-report" frameborder="0"></iframe>
+      </div>
+    </div>
+
+    <div class="chart-wrapper no-border customer-master-chart-wrapper">
+      <div>
+        <!-- <h2 class="sub-heading">Customer Master Chart</h2> -->
+        <iframe src="/customer-master-report" frameborder="0"></iframe>
+      </div>
+    </div>
+
+    <div class="chart-wrapper no-border potential-main-chart-wrapper">
+      <div>
+        <!-- <h2 class="sub-heading">Potential Chart</h2> -->
+        <iframe src="/potential-report" frameborder="0"></iframe>
+      </div>
+    </div>
+
+    <div>
+      <div class="product-entry-wrapper">
+        <!-- <h2 class="sub-heading">No Of Centres With Xyz Product Entry</h2> -->
+        <iframe src="/rate-with-product-report" frameborder="0"></iframe>
+      </div>
+    </div>
+
+
+    <!-- https://www.anychart.com/blog/2020/11/11/venn-diagram-javascript/ -->
+
+  </main>
+
+  <div class="menu-overlay"></div>
+
+  <script src="../../js/jquery.min.js"></script>
+  <script src="../../js/common.js"></script>
+
+  <script src="../../js/moment.min.js"></script>
+  <script src="../../js/daterangepicker.min.js"></script>
+
+  <script type="text/javascript" src="../../js/googlechart.js"></script>
+
+  <script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-core.min.js"></script>
+  <script src="https://cdn.anychart.com/releases/8.9.0/js/anychart-venn.min.js"></script>
+  <script src="https://cdn.anychart.com/releases/8.9.0/themes/pastel.min.js"></script>
+
+  <script src="../../js/axios.min.js"></script>
+  <script src="../../js/bootstrap.min.js"></script>
+  <script src="../../js/admin.js"></script>
+
+  <script type="text/javascript">
+
+    $(function () {
+      $('input[name="daterange"]').daterangepicker({
+        opens: 'left'
+      }, function (start, end, label) {
+        console.log("A new date selection was made: " + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD'));
+      });
+    });
+
+    // google.charts.load('current', { packages: ['corechart', 'bar'] });
+    // google.charts.setOnLoadCallback(drawBusinessChart);
+    // google.charts.setOnLoadCallback(customerMasterChart);
+    // google.charts.setOnLoadCallback(potentialChart1);
+    // google.charts.setOnLoadCallback(potentialChart2);
+    // google.charts.setOnLoadCallback(potentialChart3);
+    // google.charts.setOnLoadCallback(rcAgreementChart);
+
+    // function drawBusinessChart() {
+    //   let data = google.visualization.arrayToDataTable([
+    //     ['Element', 'ACHIEVEMENT', 'TARGET', '% ACH', { role: 'annotation' }],
+    //     ['Brand', 10, 24, 20, ''],
+    //     ['Brand Wise', 16, 22, 23, ''],
+    //     ['Brand Wise', 28, 19, 29, '']
+    //   ]);
+
+    //   let options = {
+    //     width: 550,
+    //     height: 400,
+    //     legend: { position: 'bottom', maxLines: 3 },
+    //     bar: { groupWidth: '80%' },
+    //     isStacked: true,
+    //   };
+
+    //   let chart = new google.visualization.ColumnChart(document.getElementById('business_chart'));
+    //   chart.draw(data, options);
+    // }
+
+    // function customerMasterChart() {
+    //   var data = new google.visualization.DataTable();
+    //   var data = google.visualization.arrayToDataTable([
+    //     ['Element', 'Customer', { role: 'style' }],
+    //     ['Customers', 3734834, '#272666'],            // RGB value
+    //     ['Centre Admin', 3734734, '#272666'],            // English color name
+    //     ['Embryologist', 3734834, '#272666'],
+    //     ['Purchase Incharge', 3731834, 'color: #272666'], // CSS-style declaration
+    //     ['IUI Speacialists', 3734834, 'color: #272666'], // CSS-style declaration
+    //     ['IVF Head Nurse', 3739834, 'color: #272666'], // CSS-style declaration
+    //     ['IVF Dr Assistant', 3734834, 'color: #272666'], // CSS-style declaration
+    //     ['IVF Dr Core', 3738834, 'color: #272666'], // CSS-style declaration
+    //   ]);
+
+    //   let options = {
+    //     width: 1100,
+    //     legend: { position: 'bottom' },
+    //     isStacked: true,
+    //   };
+
+    //   var chart = new google.visualization.ColumnChart(document.getElementById('customer_master_chart'));
+    //   chart.draw(data, options);
+    // }
+
+    // function potentialChart1() {
+
+    //   var data = google.visualization.arrayToDataTable([
+    //     ['Task', 'Hours per Day'],
+    //     ['Total No of IUI Cycles', 40],
+    //     ['Total No of IVF Cycles', 60]
+    //   ]);
+
+    //   var options = {
+    //     title: 'Chart 1',
+    //     width: 300,
+    //     is3D: true,
+    //     legend: { position: 'bottom' },
+    //     backgroundColor: 'transparent'
+    //   };
+
+    //   var chart = new google.visualization.PieChart(document.getElementById('potential_chart1'));
+
+    //   chart.draw(data, options);
+    // }
+
+    // function potentialChart2() {
+
+    //   var data = google.visualization.arrayToDataTable([
+    //     ['Task', 'Hours per Day'],
+    //     ['Self (Patient) Cycles', 50],
+    //     ['Donor cycles', 50]
+    //   ]);
+
+    //   var options = {
+    //     title: 'Chart 2',
+    //     width: 300,
+    //     is3D: true,
+    //     legend: { position: 'bottom' },
+    //     backgroundColor: 'transparent'
+    //   };
+
+    //   var chart = new google.visualization.PieChart(document.getElementById('potential_chart2'));
+
+    //   chart.draw(data, options);
+    // }
+
+    // function potentialChart3() {
+
+    //   var data = google.visualization.arrayToDataTable([
+    //     ['Task', 'Hours per Day'],
+    //     ['Agonist Cycles', 40],
+    //     ['Antagonist cycles', 60]
+    //   ]);
+
+    //   var options = {
+    //     title: 'Chart 3',
+    //     width: 300,
+    //     is3D: true,
+    //     legend: { position: 'bottom' },
+    //     backgroundColor: 'transparent'
+    //   };
+
+    //   var chart = new google.visualization.PieChart(document.getElementById('potential_chart3'));
+
+    //   chart.draw(data, options);
+    // }
+
+    // function rcAgreementChart() {
+    //   let data = google.visualization.arrayToDataTable([
+    //     ['Element', 'ACHIEVEMENT', 'TARGET', { role: 'annotation' }],
+    //     ['RBM', 10, 24, ''],
+    //     ['Centre Agreements Count', 16, 22, ''],
+    //     ['Collapsible List', 28, 19, '']
+    //   ]);
+
+    //   let options = {
+    //     width: 550,
+    //     height: 400,
+    //     legend: { position: 'bottom', maxLines: 3 },
+    //     bar: { groupWidth: '80%' },
+    //     isStacked: true,
+    //   };
+
+    //   let chart = new google.visualization.ColumnChart(document.getElementById('rc_agreement_chart'));
+    //   chart.draw(data, options);
+    // }
+
+    // function productEntryChart() {
+    //   anychart.onDocumentReady(function () {
+    //     // set chart theme
+    //     anychart.theme('pastel');
+
+    //     var data = [
+    //       {
+    //         x: 'A',
+    //         value: 100,
+    //         name: 'Asporelix Acc',
+    //         tooltipTitle: 'Asporelix Acc \n 79',
+    //         normal: { fill: "#8ecafb 0.7" },
+    //         hovered: { fill: "#8ecafb 1" },
+    //         selected: { fill: "#8ecafb 1" }
+    //       },
+    //       {
+    //         x: 'B',
+    //         value: 100,
+    //         name: 'Foligraf Acc',
+    //         tooltipTitle: 'Foligraf Acc \n 60',
+    //         normal: { fill: "#ffeaa6 0.7" },
+    //         hovered: { fill: "#ffeaa6 1" },
+    //         selected: { fill: "#ffeaa6 1" }
+    //       },
+    //       {
+    //         x: 'C',
+    //         value: 100,
+    //         name: 'Humog Acc',
+    //         tooltipTitle: 'Humog Acc \n 60',
+    //         normal: { fill: "#ee957f 0.7" },
+    //         hovered: { fill: "#ee957f 1" },
+    //         selected: { fill: "#ee957f 1" }
+    //       },
+    //       {
+    //         x: 'D',
+    //         value: 100,
+    //         name: 'Rhcg Acc',
+    //         tooltipTitle: 'Rhcg Acc \n 60',
+    //         normal: { fill: "#ee957f 0.7" },
+    //         hovered: { fill: "#ee957f 1" },
+    //         selected: { fill: "#ee957f 1" }
+    //       },
+    //       {
+    //         x: ['A', 'C'],
+    //         value: 20,
+    //         name: 'Add to \n wishlist',
+    //         tooltipTitle: 'Add to wishlist',
+    //         tooltipDesc: 'Add the ingredients in the next shopping list',
+    //         normal: { fill: "#a98caf 0.6" },
+    //         hovered: { fill: "#a98caf 1" },
+    //         selected: { fill: "#a98caf 1" },
+    //         hatchFill: {
+    //           type: "weave",
+    //           color: "#8b6b92"
+    //         }
+    //       },
+    //       {
+    //         x: ['A', 'D'],
+    //         value: 20,
+    //         name: 'Add to \n wishlist',
+    //         tooltipTitle: 'Add to wishlist',
+    //         tooltipDesc: 'Add the ingredients in the next shopping list',
+    //         normal: { fill: "#a98caf 0.6" },
+    //         hovered: { fill: "#a98caf 1" },
+    //         selected: { fill: "#a98caf 1" },
+    //         hatchFill: {
+    //           type: "weave",
+    //           color: "#8b6b92"
+    //         }
+    //       },
+    //       {
+    //         x: ['A', 'B'],
+    //         value: 20,
+    //         name: 'Possibility \n of disaster',
+    //         tooltipTitle: 'Possibility of disaster',
+    //         tooltipDesc: 'Keep a backup ready',
+    //         normal: { fill: "#9fdebe 0.8" },
+    //         hovered: { fill: "#9fdebe 1" },
+    //         selected: { fill: "#9fdebe 1" },
+    //         hatchFill: {
+    //           type: "weave",
+    //           color: "#83c3a3"
+    //         }
+    //       },
+    //       {
+    //         x: ['B', 'D'],
+    //         value: 20,
+    //         name: 'Possibility \n of disaster',
+    //         tooltipTitle: 'Possibility of disaster',
+    //         tooltipDesc: 'Keep a backup ready',
+    //         normal: { fill: "#9fdebe 0.8" },
+    //         hovered: { fill: "#9fdebe 1" },
+    //         selected: { fill: "#9fdebe 1" },
+    //         hatchFill: {
+    //           type: "weave",
+    //           color: "#83c3a3"
+    //         }
+    //       },
+    //       {
+    //         x: ['B', 'C'],
+    //         value: 20,
+    //         name: 'Try on a \n holiday',
+    //         tooltipTitle: 'Try on a holiday',
+    //         tooltipDesc: 'When there is no other work pending',
+    //         normal: { fill: "#f5b57c 0.8" },
+    //         hovered: { fill: "#f5b57c 1" },
+    //         selected: { fill: "#f5b57c 1" },
+    //         hatchFill: {
+    //           type: "weave",
+    //           color: "#d09259"
+    //         }
+    //       },
+    //       {
+    //         x: ['C', 'D'],
+    //         value: 20,
+    //         name: 'Try on a \n holiday',
+    //         tooltipTitle: 'Try on a holiday',
+    //         tooltipDesc: 'When there is no other work pending',
+    //         normal: { fill: "#f5b57c 0.8" },
+    //         hovered: { fill: "#f5b57c 1" },
+    //         selected: { fill: "#f5b57c 1" },
+    //         hatchFill: {
+    //           type: "weave",
+    //           color: "#d09259"
+    //         }
+    //       },
+    //       {
+    //         x: ['A', 'B', 'C', 'D'],
+    //         value: 30,
+    //         name: 'The Perfect \n Recipe',
+    //         tooltipTitle: 'The Perfect Recipe',
+    //         tooltipDesc: 'Easy to follow and fast to cook with whatever is in the kitchen',
+    //         label: { enabled: true, fontStyle: 'normal' },
+    //         normal: { fill: "#8392ab 0.9" },
+    //         hovered: { fill: "#8392ab 1" },
+    //         selected: { fill: "#8392ab 1" },
+    //         hatchFill: {
+    //           type: "percent40",
+    //           color: "#5f6b7d"
+    //         }
+    //       }
+    //     ];
+
+    //     // create venn diagram
+    //     var chart = anychart.venn(data);
+
+    //     // set chart title
+    //     chart
+    //       .title()
+    //       .enabled(true)
+    //       .fontFamily('Bold, sans-serif')
+    //       .fontSize(16)
+    //       .padding({ bottom: 30 })
+    //       .text('No Of Centres With Xyz Product Entry')
+    //       .fontColor('#000');
+
+    //     // set chart stroke
+    //     chart.stroke('2 #fff');
+
+    //     // set labels settings
+    //     chart
+    //       .labels()
+    //       .fontSize(20)
+    //       .fontColor('#5e6469')
+    //       .hAlign("center")
+    //       .vAlign("center")
+    //       .fontFamily('Bold, sans-serif')
+    //       .fontWeight('500')
+    //       .format('{%Name}');
+
+    //     // set intersections labels settings
+    //     chart
+    //       .intersections()
+    //       .labels()
+    //       .fontColor('#fff')
+    //       .format('{%Name}');
+
+    //     // disable legend
+    //     chart.legend(false);
+
+    //     // set tooltip settings
+    //     chart
+    //       .tooltip()
+    //       .titleFormat('{%tooltipTitle}')
+    //       .format("{%tooltipDesc}")
+    //       .background().fill("#000 0.5");
+
+    //     // set container id for the chart
+    //     chart.container('product_entry_chart');
+    //     // initiate chart drawing
+    //     chart.draw();
+    //   });
+    // }
+
+    // productEntryChart();
+
+  </script>
+
+</body>
+
+</html>

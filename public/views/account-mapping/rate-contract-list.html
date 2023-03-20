@@ -1,0 +1,167 @@
+<html>
+
+<head>
+    <title>FERTIBIZ : Potential List for Approval </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/app.css" />
+</head>
+
+<body class="inside-theme">
+
+  <div class="theme-wrapper">
+    <div class="navigation"></div>
+    <div class="content">
+      <div class="content-bg">
+        <div class="right-header">
+          <h1>
+            <div class="bread">
+              <span id="kamName"></span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="rbm-right-arrow" viewBox="0 0 64 42.67"><defs></defs><title>Asset 47</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1" d="M63.22,19.57,44.5.78a2.67,2.67,0,0,0-3.78,3.77L54.79,18.67H2.67a2.67,2.67,0,1,0,0,5.33H55L40.73,38.11a2.67,2.67,0,1,0,3.76,3.78L63.21,23.35a2.67,2.67,0,0,0,0-3.78Z"/></g></g></svg>
+              <span>Account Mapping</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="rbm-right-arrow" viewBox="0 0 64 42.67"><defs></defs><title>Asset 47</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1" d="M63.22,19.57,44.5.78a2.67,2.67,0,0,0-3.78,3.77L54.79,18.67H2.67a2.67,2.67,0,1,0,0,5.33H55L40.73,38.11a2.67,2.67,0,1,0,3.76,3.78L63.21,23.35a2.67,2.67,0,0,0,0-3.78Z"/></g></g></svg>
+              <span>Rate Contract</span>
+            </div>
+          </h1>
+          <ul id="right-nav"></ul>
+        </div>
+        <div class="right-content">   
+            
+            <div class="theme-form">
+
+                <div class="text-right">                  
+                    <a href="javascript:void(0);" onclick="goBack()" class="btn btn-default btn-grad go-back">Go Back</a>
+                </div>
+
+                <!-- <ul class="nav nav-tabs gradient-tabs">
+                    <li class="active"><a data-toggle="tab" href="#chart">Data in Chart Format</a></li>
+                    <li><a data-toggle="tab" href="#tabular">Data in Tabular Format</a></li>
+                  </ul> -->
+               
+                <div class="tab-content">
+                  <div id="chart" class="tab-pane fade">
+                    <table>
+                      <tr>
+                        <td>
+                          <div id="business_chart"></div>
+                        </td>
+                        <td>
+                          <div id="business_chart_FOLIGRAF"></div>
+                        </td>
+                        <td>
+                          <div id="business_chart_HUMOG"></div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <div id="business_chart_ASPORELIX"></div>
+                        </td>
+                        <td>
+                          <div id="business_chart_R-HUCOG"></div>
+                        </td>
+                        <td>
+                          <div id="business_chart_FOLICULIN"></div>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td colspan="3">
+                          <div id="business_chart_MIDYDROGEN"></div>
+                        </td>
+                      </tr>
+                  </table>
+                  </div>
+                    <div id="tabular" class="tab-pane fade in active">
+                        
+                      <div class="text-right filter-main-wrapper">
+                        <div class="text-right"><a href="javascript:void(0);" onclick="approveListingRC();return false;" class="btn btn-default btn-grad go-back">Approve Selected</a></div>
+                        <div class="form-group filter-wrapper">                              
+                          <select class="form-control" id="comboAccountCategory" onchange="filterData()">
+                            <option value="none" selected="" disabled="">Select Status</option>
+                            <option value="All">All</option>
+                            <option value="approved">Approved</option>
+                            <option value="pending">Approval Pending</option>
+                            <option value="rejected">Rejected</option>
+                          </select>
+                          <!-- <button onclick="filterData()" class="btn btn-default btn-grad go-back">Filter ata</button> -->
+                        </div>
+                      </div>
+
+                        <div class="table-responsive">
+                          <table class="table table-data shadow" id="filterDataByCategoryTable">
+                            <thead>
+                                <tr>
+                                    <th>Approve</th>
+                                    <th>Account Name</th>
+                                    <th>Centre Name</th>
+                                    <th>IVF Core</th>
+                                    <th>Rate Contract</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="centerList">
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="loader">
+    <img src="../../img/loader.gif" alt="ivf loader" class="img-responsive" />
+  </div>
+
+  <div class="menu-overlay"></div>
+
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/common.js"></script>
+    <script src="../../js/axios.min.js"></script>
+    <script src="../../js/bootstrap.min.js"></script>
+    <script src="../../js/admin.js"></script>
+    <script src="../../js/account-mapping.js"></script>
+    <script src="../../js/googlechart.js"></script>
+    <script type="text/javascript" src="../../js/businessReport.js"></script>
+
+    <script>
+        $(function () {
+            google.charts.load('current', { packages: ['corechart', 'bar'] });
+            getKamDetails();
+            setupRateContractPage();
+            $('#selectAll').click(function (e) {
+                var table = $(e.target).closest('table');
+                $('td input:checkbox', table).prop('checked', this.checked);
+            });
+        });
+
+        function filterData() {
+          //debugger;
+          let dropdown, table, rows, cells, empName, filter;
+            dropdown = document.getElementById("comboAccountCategory");
+            table = document.getElementById("filterDataByCategoryTable");
+            rows = table.getElementsByTagName("tr");            
+            filter = dropdown.value;            
+            for (let row of rows) { // `for...of` loops through the NodeList
+                cells = row.getElementsByTagName("td");
+                if (cells) {
+                    //empName = cells[4] || null; // gets the 2nd `td` or nothing
+                    empName = cells[4] ? cells[4].querySelector('svg').getAttribute('class') : null; // gets the 2nd `td` or nothing                    
+                    // if the filter is set to 'All', or this is the header row, or 2nd `td` text matches filter
+                    if (filter === "All" || !empName || (filter === empName.toLowerCase())) {
+                        row.style.display = ""; // shows this row                        
+                    }
+                    else {
+                        row.style.display = "none"; // hides this row
+                    }
+                }
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
