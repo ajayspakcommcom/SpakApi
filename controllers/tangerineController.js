@@ -239,7 +239,7 @@ const htmlTemplate = `
 
 `;
 
-mailOption.MailOptions({ subject: 'Sending Email using Node.js', html: htmlTemplate });
+//mailOption.MailOptions({ subject: 'Sending Email using Node.js', html: htmlTemplate });
 
 exports.getContactListData = (req, res, next) => {
     let params = Object.assign(req.params, req.body);
@@ -359,6 +359,69 @@ function addReservation(objParam) {
                     .input("Date", sql.NVarChar, (objParam.Date))
                     .input("Time", sql.NVarChar, (objParam.Time))
                     .execute("USP_TANGERINE_ADD_RESERVATION")
+                    .then(function (resp) {
+                        resolve(resp.recordset);
+                        dbConn.close();
+                    })
+                    .catch(function (err) {
+                        console.log(err);
+                        dbConn.close();
+                    });
+            })
+            .catch(function (err) {
+                console.log(err);
+            });
+    });
+};
+
+exports.getSubscriptionListData = (req, res, next) => {
+    let params = Object.assign(req.params, req.body);
+    getSubscriptionListData(params).then(result => {
+        res.status(_STATUSCODE).json(result)
+    })
+};
+
+getSubscriptionListData = (objParam) => {
+    return new Promise((resolve) => {
+        var dbConn = new sql.ConnectionPool(dbConfig.dataBaseConfig);
+        dbConn
+            .connect()
+            .then(function () {
+                var request = new sql.Request(dbConn);
+                request
+                    .execute("USP_TANGERINE_GET_SUBSCRIPTION_LIST")
+                    .then(function (resp) {
+                        resolve(resp.recordset);
+                        dbConn.close();
+                    })
+                    .catch(function (err) {
+                        console.log(err);
+                        dbConn.close();
+                    });
+            })
+            .catch(function (err) {
+                console.log(err);
+            });
+    });
+};
+
+exports.addSubscription = (req, res, next) => {
+    let params = Object.assign(req.params, req.body);
+    addSubscription(params).then(result => {
+        res.status(_STATUSCODE).json(result)
+    })
+};
+
+function addSubscription(objParam) {
+    return new Promise((resolve) => {
+        var dbConn = new sql.ConnectionPool(dbConfig.dataBaseConfig);
+        dbConn
+            .connect()
+            .then(function () {
+                var request = new sql.Request(dbConn);
+                request
+                    .input("Email", sql.NVarChar, objParam.Email)
+                    .execute("USP_TANGERINE_ADD_SUBSCRIPTION")
                     .then(function (resp) {
                         resolve(resp.recordset);
                         dbConn.close();

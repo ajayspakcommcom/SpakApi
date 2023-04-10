@@ -9,4 +9,8 @@ router.post('/tangerine/add-contact', controller.addContactUs);
 router.get('/tangerine/reservation-list', controller.getReservationListData);
 router.post('/tangerine/add-reservation', controller.addReservation);
 
+router.get('/tangerine/subscription-list', controller.getSubscriptionListData);
+router.post('/tangerine/add-subscription', controller.addSubscription);
+
+
 module.exports = router;

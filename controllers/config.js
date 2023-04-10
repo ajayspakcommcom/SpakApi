@@ -18,8 +18,8 @@
 
 exports.dataBaseConfig = {
   server: "N1NWPLSK12SQL-v03.shr.prod.ams1.secureserver.net",
-  user: "spak",
-  password: "Spak@12345",
+  user: "spakUser",
+  password: "Spak@1234-",
   port: 1433,
   database: "spakApiDb",
   pool: {
